@@ -144,7 +144,8 @@ def main():
             message.sub_info('Re-installing kernel')
             misc.chroot_exec(('apt-get', 'purge', '--yes', 'linux-image*', '-q'))
         message.sub_debug("Kernel Selection Debug: {0}, {1}".format(type(config.KERNEL), config.KERNEL))
-        if config.KERNEL is not "default" or None:
+        misc.chroot_exec(('apt-get', 'update'))
+        if config.KERNEL != "default" and config.KERNEL is not None:
             misc.chroot_exec(('apt-get', 'install', '--yes', \
                 config.KERNEL, '-q'))
         else:  # use the kernel the user specified in the config.
@@ -167,7 +168,7 @@ def main():
         message.sub_info('Copying boot files')
         message.sub_debug('Initrd', initrd)
         message.sub_debug('Vmlinuz', vmlinuz)
-        misc.copy_file(initrd, misc.join_paths(config.ISO_DIR, 'casper/initrd.lz'))
+        misc.copy_file(initrd, misc.join_paths(config.ISO_DIR, 'casper/initrd'))
         
         # FIXME: extend to support grub
         efi_boot_entry = False

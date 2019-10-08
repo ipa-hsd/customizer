@@ -70,6 +70,13 @@ make LRELEASE=true
 sudo make install
 ```
 
+**Additional Info:**
+Fixes for 18.04's recent kernel early microcode changes breaking customizer's UUID extraction from the initrd.
+
+18.04 includes /usr/bin/unmkinitramfs in initramfs-tools-core, but earlier versions may not.
+It's included in this release's artifacts, just to save someone a hassle.
+Stick it in FileSystem/usr/bin/unmkinitramfs for releases earlier than bionic that have gotten microcode updates.
+
 [manual]: docs/manual.md
 [wiki]: ../../wiki
 [contributors]: data/contributors

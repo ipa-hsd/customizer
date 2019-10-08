@@ -33,15 +33,15 @@ for section in ('preferences', 'saved'):
         conf.add_section(section)
 
 # Make sure these end up to be strings in both python2 and python3.
-WORK_DIR = '{}'.format(conf.get('preferences', 'WORK_DIR'))
+WORK_DIR = os.getenv('WORK_DIR', '{}'.format(conf.get('preferences', 'WORK_DIR')))
 LOCALES = '{}'.format(conf.get('preferences', 'LOCALES'))
 RESOLUTION = '{}'.format(conf.get('preferences', 'RESOLUTION'))
 COMPRESSION = '{}'.format(conf.get('preferences', 'COMPRESSION'))
 VRAM = '{}'.format(conf.get('preferences', 'VRAM'))
 
-ISO = '{}'.format(conf.get('saved', 'ISO'))
+ISO = os.getenv('ISO', '{}'.format(conf.get('saved', 'ISO')))
 DEB = '{}'.format(conf.get('saved', 'DEB'))
-HOOK = '{}'.format(conf.get('saved', 'HOOK'))
+HOOK = os.getenv('HOOK', '{}'.format(conf.get('saved', 'HOOK')))
 KERNEL = '{}'.format(conf.get('saved', 'KERNEL'))
 PURGE_KERNEL = '{}'.format(conf.get('saved', 'PURGE_KERNEL'))
 

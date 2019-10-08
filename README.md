@@ -56,6 +56,19 @@ of typing lowercase commands and preferring lowercase directories.
 
 The project name remains Customizer with a capital C.
 
+**Dependencies**
+```
+sudo apt install pyqt5-dev-tools xorriso
+```
+
+**Installation**
+```
+cd <working/dir>
+git clone https://github.com/ipa-hsd/customizer
+cd customizer
+make LRELEASE=true
+sudo make install
+```
 
 [manual]: docs/manual.md
 [wiki]: ../../wiki

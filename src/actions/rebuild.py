@@ -263,7 +263,7 @@ def main():
     sfs_size = os.path.getsize(misc.join_paths(config.ISO_DIR, \
         'casper/filesystem.squashfs'))
     message.sub_debug('SquashFS filesystem size', sfs_size)
-    if sfs_size > 4000000000:
+    if sfs_size > 80000000000:
         raise(message.exception('The SquashFS filesystem size is greater than 4GB'))
 
     message.sub_info('Creating filesystem.size')
@@ -332,7 +332,7 @@ def main():
         distrib + '-' + arch + '-' + release, '-isohybrid-mbr',\
         '/usr/lib/ISOLINUX/isohdpfx.bin', '-b', 'isolinux/isolinux.bin', \
         '-c', 'isolinux/boot.cat', '-J', '-l', '-no-emul-boot', \
-        '-boot-load-size', '4', '-boot-info-table', '-o', iso_file, \
+        '-boot-load-size', '4', '-boot-info-table', '-o', iso_file, '-iso-level', '4'\
         '-cache-inodes', '-input-charset', 'utf-8', '.'))
 
     message.sub_info('Creating ISO checksums')
